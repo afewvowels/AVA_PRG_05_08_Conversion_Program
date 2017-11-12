@@ -5,6 +5,7 @@
  */
 package java_prg_05_08_conversion_program;
 
+import java.util.Scanner;
 /**
  *
  * @author bluebackdev
@@ -86,8 +87,85 @@ public class JAVA_PRG_05_08_Conversion_Program {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args)
+    {
+        showMenu();
     }
     
+    public static void showMenu()
+    {
+        int intChoice = -1;
+        
+        double dblMeters;
+        
+        Scanner scrKeyboard = new Scanner(System.in);
+        
+        System.out.print("Enter a distance in meters: ");
+        dblMeters = scrKeyboard.nextDouble();
+            
+        while (intChoice != 4)
+        {
+            System.out.println("1. Convert to kilometers");
+            System.out.println("2. Convert to inches");
+            System.out.println("3. Convert to feet");
+            System.out.println("4. Quit the program");
+            
+            intChoice = scrKeyboard.nextInt();
+            
+            switch(intChoice)
+            {
+                case 1:
+                    showKilometers(dblMeters);
+                    break;
+                case 2:
+                    showInches(dblMeters);
+                    break;
+                case 3:
+                    showFeet(dblMeters);
+                    break;
+                case 4:
+                    System.out.println("Bye!");
+                    break;
+                default:
+                    System.out.println("Select from the available options: ");
+                    break;
+            }
+        }
+    }
+    
+    public static void showKilometers(double dblMeters)
+    {
+        final double DBL_CONVERSION_FACTOR = 0.001;
+        
+        double dblKilometers;
+        
+        dblKilometers = DBL_CONVERSION_FACTOR * dblMeters;
+        
+        System.out.println(dblMeters + " meters is " + dblKilometers +
+                " kilometers");
+    }
+    
+    public static void showInches(double dblMeters)
+    {
+        final double DBL_CONVERSION_FACTOR = 39.37;
+        
+        double dblInches;
+        
+        dblInches = DBL_CONVERSION_FACTOR * dblMeters;
+        
+        System.out.println(dblMeters + " meters is " + dblInches +
+                " inches");
+    }
+    
+    public static void showFeet(double dblMeters)
+    {
+        final double DBL_CONVERSION_FACTOR = 3.281;
+        
+        double dblFeet;
+        
+        dblFeet = DBL_CONVERSION_FACTOR * dblMeters;
+        
+        System.out.println(dblMeters + " meters is " + dblFeet +
+                " feet");
+    }
 }
